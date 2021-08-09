@@ -1,0 +1,2 @@
+class HogeHogeException(Exception):
+    pass

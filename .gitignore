@@ -1,0 +1,4 @@
+python/*
+*/python/*
+.mypy_cache
+*/.git

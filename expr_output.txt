@@ -1,0 +1,220 @@
+def isBoolOp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.BoolOp):
+        nodes['BoolOp'] = {
+				'op': parse_nodes(nodes.op, nest),
+				'values': parse_nodes(nodes.values, nest),
+        }
+    return nodes
+
+def isNamedExpr(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.NamedExpr):
+        nodes['NamedExpr'] = {
+				'target': parse_nodes(nodes.target, nest),
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isBinOp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.BinOp):
+        nodes['BinOp'] = {
+				'left': parse_nodes(nodes.left, nest),
+				'op': parse_nodes(nodes.op, nest),
+				'right': parse_nodes(nodes.right, nest),
+        }
+    return nodes
+
+def isUnaryOp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.UnaryOp):
+        nodes['UnaryOp'] = {
+				'op': parse_nodes(nodes.op, nest),
+				'operand': parse_nodes(nodes.operand, nest),
+        }
+    return nodes
+
+def isLambda(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Lambda):
+        nodes['Lambda'] = {
+				'args': parse_nodes(nodes.args, nest),
+				'body': parse_nodes(nodes.body, nest),
+        }
+    return nodes
+
+def isIfExp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.IfExp):
+        nodes['IfExp'] = {
+				'test': parse_nodes(nodes.test, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'orelse': parse_nodes(nodes.orelse, nest),
+        }
+    return nodes
+
+def isDict(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Dict):
+        nodes['Dict'] = {
+				'keys': parse_nodes(nodes.keys, nest),
+				'values': parse_nodes(nodes.values, nest),
+        }
+    return nodes
+
+def isSet(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Set):
+        nodes['Set'] = {
+				'elts': parse_nodes(nodes.elts, nest),
+        }
+    return nodes
+
+def isListComp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.ListComp):
+        nodes['ListComp'] = {
+				'elt': parse_nodes(nodes.elt, nest),
+				'generators': parse_nodes(nodes.generators, nest),
+        }
+    return nodes
+
+def isSetComp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.SetComp):
+        nodes['SetComp'] = {
+				'elt': parse_nodes(nodes.elt, nest),
+				'generators': parse_nodes(nodes.generators, nest),
+        }
+    return nodes
+
+def isDictComp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.DictComp):
+        nodes['DictComp'] = {
+				'key': parse_nodes(nodes.key, nest),
+				'value': parse_nodes(nodes.value, nest),
+				'generators': parse_nodes(nodes.generators, nest),
+        }
+    return nodes
+
+def isGeneratorExp(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.GeneratorExp):
+        nodes['GeneratorExp'] = {
+				'elt': parse_nodes(nodes.elt, nest),
+				'generators': parse_nodes(nodes.generators, nest),
+        }
+    return nodes
+
+def isAwait(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Await):
+        nodes['Await'] = {
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isYield(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Yield):
+        nodes['Yield'] = {
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isYieldFrom(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.YieldFrom):
+        nodes['YieldFrom'] = {
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isCompare(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Compare):
+        nodes['Compare'] = {
+				'left': parse_nodes(nodes.left, nest),
+				'ops': parse_nodes(nodes.ops, nest),
+				'comparators': parse_nodes(nodes.comparators, nest),
+        }
+    return nodes
+
+def isCall(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Call):
+        nodes['Call'] = {
+				'func': parse_nodes(nodes.func, nest),
+				'args': parse_nodes(nodes.args, nest),
+				'keywords': parse_nodes(nodes.keywords, nest),
+        }
+    return nodes
+
+def isFormattedValue(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.FormattedValue):
+        nodes['FormattedValue'] = {
+				'value': parse_nodes(nodes.value, nest),
+				'conversion': parse_nodes(nodes.conversion, nest),
+				'format_spec': parse_nodes(nodes.format_spec, nest),
+        }
+    return nodes
+
+def isJoinedStr(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.JoinedStr):
+        nodes['JoinedStr'] = {
+				'values': parse_nodes(nodes.values, nest),
+        }
+    return nodes
+
+def isConstant(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Constant):
+        nodes['Constant'] = {
+				'value': parse_nodes(nodes.value, nest),
+				'kind': parse_nodes(nodes.kind, nest),
+        }
+    return nodes
+
+def isAttribute(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Attribute):
+        nodes['Attribute'] = {
+				'value': parse_nodes(nodes.value, nest),
+				'attr': parse_nodes(nodes.attr, nest),
+				'expr_ctx': parse_nodes(nodes.expr_ctx, nest),
+        }
+    return nodes
+
+def isSubscript(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Subscript):
+        nodes['Subscript'] = {
+				'value': parse_nodes(nodes.value, nest),
+				'slice': parse_nodes(nodes.slice, nest),
+				'expr_ctx': parse_nodes(nodes.expr_ctx, nest),
+        }
+    return nodes
+
+def isStarred(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Starred):
+        nodes['Starred'] = {
+				'value': parse_nodes(nodes.value, nest),
+				'expr_ctx': parse_nodes(nodes.expr_ctx, nest),
+        }
+    return nodes
+
+def isName(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Name):
+        nodes['Name'] = {
+				'id': parse_nodes(nodes.id, nest),
+				'expr_ctx': parse_nodes(nodes.expr_ctx, nest),
+        }
+    return nodes
+
+def isList(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.List):
+        nodes['List'] = {
+				'elts': parse_nodes(nodes.elts, nest),
+				'expr_ctx': parse_nodes(nodes.expr_ctx, nest),
+        }
+    return nodes
+
+def isTuple(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Tuple):
+        nodes['Tuple'] = {
+				'elts': parse_nodes(nodes.elts, nest),
+				'expr_ctx': parse_nodes(nodes.expr_ctx, nest),
+        }
+    return nodes
+
+def isSlice(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Slice):
+        nodes['Slice'] = {
+				'lower': parse_nodes(nodes.lower, nest),
+				'upper': parse_nodes(nodes.upper, nest),
+				'step': parse_nodes(nodes.step, nest),
+        }
+    return nodes
+

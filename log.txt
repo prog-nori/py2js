@@ -1,0 +1,48 @@
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store()), iter=Name(id='lines', ctx=Load()), body=[Expr(value=Call(func=Name(id='print', ctx=Load()), args=[Name(id='lines', ctx=Load())], keywords=[]))], orelse=[])])], type_ignores=
+	2: ]
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store()), iter=Name(id='lines', ctx=Load()), body=[Expr(value=Call(func=Name(id='print', ctx=Load()), args=[Name(id='lines', ctx=Load())], keywords=[]))], orelse=
+	2: ])])
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store()), iter=Name(id='lines', ctx=Load()), body=[Expr(value=Call(func=Name(id='print', ctx=Load()), args=[Name(id='lines', ctx=Load())], keywords=
+	2: ]))
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store()), iter=Name(id='lines', ctx=Load()), body=[Expr(value=Call(func=Name(id='print', ctx=Load()), args=[Name(id='lines', ctx=Load
+	2: ))
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store()), iter=Name(id='lines', ctx=Load()), body=[Expr(value=Call(func=Name(id='print', ctx=Load
+	2: )
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store()), iter=Name(id='lines', ctx=Load
+	2: )
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=[])), For(target=Name(id='i', ctx=Store
+	2: )
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=[], keywords=
+	2: ])
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load()), args=
+	2: 
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load()), attr='readlines', ctx=Load
+	2: )
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store())], value=Call(func=Attribute(value=Name(id='f', ctx=Load
+	2: )
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store()))], body=[Assign(targets=[Name(id='lines', ctx=Store
+	2: ))
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=[]), optional_vars=Name(id='f', ctx=Store
+	2: )))
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant(value='main.py')], keywords=
+	2: ]
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load()), args=[Constant
+	2: value='main.py')
+======
+	1: Module(body=[With(items=[withitem(context_expr=Call(func=Name(id='open', ctx=Load
+	2: )
+======

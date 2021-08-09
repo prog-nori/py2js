@@ -1,0 +1,196 @@
+{
+    'Module': {
+        'body': [
+            {
+                'ClassDef': {
+                    'bases': [],
+                    'body': [
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {}
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Return': {
+                                            'value': {}
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': '__init__',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        },
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {}
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Expr': {
+                                            'value': {
+                                                'Call': {
+                                                    'args': [
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': [
+                                                                    'Hello',
+                                                                    'World'
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    'func': {
+                                                        'Name': {
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'id': 'print'
+                                                        }
+                                                    },
+                                                    'keywords': []
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': 'main',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        }
+                    ],
+                    'decorator_list': [],
+                    'keywords': [],
+                    'name': 'Example'
+                }
+            },
+            {
+                'If': {
+                    'body': [
+                        {
+                            'Assign': {
+                                'targets': [
+                                    {
+                                        'Name': {
+                                            'ctx': {
+                                                'Store': {}
+                                            },
+                                            'id': 'example'
+                                        }
+                                    }
+                                ],
+                                'type_comment': {},
+                                'value': {
+                                    'Call': {
+                                        'args': [],
+                                        'func': {
+                                            'Name': {
+                                                'ctx': {
+                                                    'Load': {}
+                                                },
+                                                'id': 'Example'
+                                            }
+                                        },
+                                        'keywords': []
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            'Expr': {
+                                'value': {
+                                    'Call': {
+                                        'args': [],
+                                        'func': {
+                                            'Attribute': {
+                                                'attr': 'main',
+                                                'ctx': {
+                                                    'Load': {}
+                                                },
+                                                'value': {
+                                                    'Name': {
+                                                        'ctx': {
+                                                            'Load': {}
+                                                        },
+                                                        'id': 'example'
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        'keywords': []
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    'orelse': [],
+                    'test': {
+                        'Compare': {
+                            'comparators': [
+                                {
+                                    'Constant': {
+                                        'kind': {},
+                                        'value': '__main__'
+                                    }
+                                }
+                            ],
+                            'left': {
+                                'Name': {
+                                    'ctx': {
+                                        'Load': {}
+                                    },
+                                    'id': '__name__'
+                                }
+                            },
+                            'ops': [
+                                {
+                                    'Add': '+',
+                                    'Eq': '='
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        'type_ignores': []
+    }
+}

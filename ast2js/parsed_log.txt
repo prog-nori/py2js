@@ -1,0 +1,430 @@
+{
+    'Module':{
+        'body':[
+            {
+                'Assign':{
+                    'targets':[
+                        {
+                            'Name':{
+                                'ctx':{
+                                    'Store':{}
+                                    },
+
+                                    'id':'a'                                }
+                            }
+                        ],
+
+                        'type_comment':{}
+
+                            'value':{
+                                'Constant':{
+                                    'kind':{}
+
+                                        'value':5                                    }
+                                }
+                            }
+                        },
+
+                        {
+                            'If':{
+                                'body':[
+                                    {
+                                        'Expr':{
+                                            'value':{
+                                                'Call':{
+                                                    'args':[
+                                                        {
+                                                            'Constant':{
+                                                                'kind':{}
+
+                                                                    'value':[
+                                                                        'a'
+'is'
+'larger'
+'than'
+'10'                                                                    ]
+                                                                }
+                                                            }
+                                                        ],
+
+                                                        'func':{
+                                                            'Name':{
+                                                                'ctx':{
+                                                                    'Load':{}
+                                                                    },
+
+                                                                    'id':'print'                                                                }
+                                                            },
+
+                                                            'keywords':{}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ],
+
+                                            'orelse':[
+                                                {
+                                                    'If':{
+                                                        'body':[
+                                                            {
+                                                                'Expr':{
+                                                                    'value':{
+                                                                        'Call':{
+                                                                            'args':[
+                                                                                {
+                                                                                    'Constant':{
+                                                                                        'kind':{}
+
+                                                                                            'value':[
+                                                                                                'a'
+'is'
+'smaller'
+'than'
+'10'                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                ],
+
+                                                                                'func':{
+                                                                                    'Name':{
+                                                                                        'ctx':{
+                                                                                            'Load':{}
+                                                                                            },
+
+                                                                                            'id':'print'                                                                                        }
+                                                                                    },
+
+                                                                                    'keywords':{}
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ],
+
+                                                                    'orelse':[
+                                                                        {
+                                                                            'Expr':{
+                                                                                'value':{
+                                                                                    'Call':{
+                                                                                        'args':[
+                                                                                            {
+                                                                                                'Constant':{
+                                                                                                    'kind':{}
+
+                                                                                                        'value':[
+                                                                                                            'a'
+'is'
+'10'                                                                                                        ]
+                                                                                                    }
+                                                                                                }
+                                                                                            ],
+
+                                                                                            'func':{
+                                                                                                'Name':{
+                                                                                                    'ctx':{
+                                                                                                        'Load':{}
+                                                                                                        },
+
+                                                                                                        'id':'print'                                                                                                    }
+                                                                                                },
+
+                                                                                                'keywords':{}
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                ],
+
+                                                                                'test':{
+                                                                                    'Compare':{
+                                                                                        'comparators':[
+                                                                                            {
+                                                                                                'Constant':{
+                                                                                                    'kind':{}
+
+                                                                                                        'value':10                                                                                                    }
+                                                                                                }
+                                                                                            ],
+
+                                                                                            'left':{
+                                                                                                'Name':{
+                                                                                                    'ctx':{
+                                                                                                        'Load':{}
+                                                                                                        },
+
+                                                                                                        'id':'a'                                                                                                    }
+                                                                                                },
+
+                                                                                                'ops':[
+                                                                                                    {
+                                                                                                        'Lt':'<'                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ],
+
+                                                                            'test':{
+                                                                                'Compare':{
+                                                                                    'comparators':[
+                                                                                        {
+                                                                                            'Constant':{
+                                                                                                'kind':{}
+
+                                                                                                    'value':10                                                                                                }
+                                                                                            }
+                                                                                        ],
+
+                                                                                        'left':{
+                                                                                            'Name':{
+                                                                                                'ctx':{
+                                                                                                    'Load':{}
+                                                                                                    },
+
+                                                                                                    'id':'a'                                                                                                }
+                                                                                            },
+
+                                                                                            'ops':[
+                                                                                                {
+                                                                                                    'Gt':'>'                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+
+                                                                            {
+                                                                                'Assign':{
+                                                                                    'targets':[
+                                                                                        {
+                                                                                            'Name':{
+                                                                                                'ctx':{
+                                                                                                    'Store':{}
+                                                                                                    },
+
+                                                                                                    'id':'x'                                                                                                }
+                                                                                            }
+                                                                                        ],
+
+                                                                                        'type_comment':{}
+
+                                                                                            'value':{
+                                                                                                'Constant':{
+                                                                                                    'kind':{}
+
+                                                                                                        'value':{}
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+
+                                                                                            {
+                                                                                                'If':{
+                                                                                                    'body':[
+                                                                                                        {
+                                                                                                            'Expr':{
+                                                                                                                'value':{
+                                                                                                                    'Call':{
+                                                                                                                        'args':[
+                                                                                                                            {
+                                                                                                                                'Constant':{
+                                                                                                                                    'kind':{}
+
+                                                                                                                                        'value':'yes'                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            ],
+
+                                                                                                                            'func':{
+                                                                                                                                'Name':{
+                                                                                                                                    'ctx':{
+                                                                                                                                        'Load':{}
+                                                                                                                                        },
+
+                                                                                                                                        'id':'print'                                                                                                                                    }
+                                                                                                                                },
+
+                                                                                                                                'keywords':{}
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                ],
+
+                                                                                                                'orelse':{}
+
+                                                                                                                    'test':{
+                                                                                                                        'Compare':{
+                                                                                                                            'comparators':[
+                                                                                                                                {
+                                                                                                                                    'Constant':{
+                                                                                                                                        'kind':{}
+
+                                                                                                                                            'value':{}
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    ],
+
+                                                                                                                                    'left':{
+                                                                                                                                        'Name':{
+                                                                                                                                            'ctx':{
+                                                                                                                                                'Load':{}
+                                                                                                                                                },
+
+                                                                                                                                                'id':'x'                                                                                                                                            }
+                                                                                                                                        },
+
+                                                                                                                                        'ops':[
+                                                                                                                                            {
+                                                                                                                                                'IsNot':'is'
+'not'                                                                                                                                            }
+                                                                                                                                        ]
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+
+                                                                                                                        {
+                                                                                                                            'If':{
+                                                                                                                                'body':[
+                                                                                                                                    {
+                                                                                                                                        'Expr':{
+                                                                                                                                            'value':{
+                                                                                                                                                'Call':{
+                                                                                                                                                    'args':[
+                                                                                                                                                        {
+                                                                                                                                                            'Constant':{
+                                                                                                                                                                'kind':{}
+
+                                                                                                                                                                    'value':'yes2'                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        ],
+
+                                                                                                                                                        'func':{
+                                                                                                                                                            'Name':{
+                                                                                                                                                                'ctx':{
+                                                                                                                                                                    'Load':{}
+                                                                                                                                                                    },
+
+                                                                                                                                                                    'id':'print'                                                                                                                                                                }
+                                                                                                                                                            },
+
+                                                                                                                                                            'keywords':{}
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            ],
+
+                                                                                                                                            'orelse':{}
+
+                                                                                                                                                'test':{
+                                                                                                                                                    'UnaryOp':{
+                                                                                                                                                        'op':{
+                                                                                                                                                            'Not':'not'                                                                                                                                                        },
+
+                                                                                                                                                        'operand':{
+                                                                                                                                                            'Compare':{
+                                                                                                                                                                'comparators':[
+                                                                                                                                                                    {
+                                                                                                                                                                        'Constant':{
+                                                                                                                                                                            'kind':{}
+
+                                                                                                                                                                                'value':{}
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+
+                                                                                                                                                                        'left':{
+                                                                                                                                                                            'Name':{
+                                                                                                                                                                                'ctx':{
+                                                                                                                                                                                    'Load':{}
+                                                                                                                                                                                    },
+
+                                                                                                                                                                                    'id':'x'                                                                                                                                                                                }
+                                                                                                                                                                            },
+
+                                                                                                                                                                            'ops':[
+                                                                                                                                                                                {
+                                                                                                                                                                                    'Is':'is'                                                                                                                                                                                }
+                                                                                                                                                                            ]
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    },
+
+                                                                                                                                                    {
+                                                                                                                                                        'If':{
+                                                                                                                                                            'body':[
+                                                                                                                                                                {
+                                                                                                                                                                    'Expr':{
+                                                                                                                                                                        'value':{
+                                                                                                                                                                            'Call':{
+                                                                                                                                                                                'args':[
+                                                                                                                                                                                    {
+                                                                                                                                                                                        'Constant':{
+                                                                                                                                                                                            'kind':{}
+
+                                                                                                                                                                                                'value':[
+                                                                                                                                                                                                    'x'
+'is'
+'10!!'                                                                                                                                                                                                ]
+                                                                                                                                                                                            }
+                                                                                                                                                                                        }
+                                                                                                                                                                                    ],
+
+                                                                                                                                                                                    'func':{
+                                                                                                                                                                                        'Name':{
+                                                                                                                                                                                            'ctx':{
+                                                                                                                                                                                                'Load':{}
+                                                                                                                                                                                                },
+
+                                                                                                                                                                                                'id':'print'                                                                                                                                                                                            }
+                                                                                                                                                                                        },
+
+                                                                                                                                                                                        'keywords':{}
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+
+                                                                                                                                                                        'orelse':{}
+
+                                                                                                                                                                            'test':{
+                                                                                                                                                                                'Compare':{
+                                                                                                                                                                                    'comparators':[
+                                                                                                                                                                                        {
+                                                                                                                                                                                            'Constant':{
+                                                                                                                                                                                                'kind':{}
+
+                                                                                                                                                                                                    'value':10                                                                                                                                                                                                }
+                                                                                                                                                                                            }
+                                                                                                                                                                                        ],
+
+                                                                                                                                                                                        'left':{
+                                                                                                                                                                                            'Name':{
+                                                                                                                                                                                                'ctx':{
+                                                                                                                                                                                                    'Load':{}
+                                                                                                                                                                                                    },
+
+                                                                                                                                                                                                    'id':'x'                                                                                                                                                                                                }
+                                                                                                                                                                                            },
+
+                                                                                                                                                                                            'ops':[
+                                                                                                                                                                                                {
+                                                                                                                                                                                                    'Is':'is'                                                                                                                                                                                                }
+                                                                                                                                                                                            ]
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+
+                                                                                                                                                                        'type_ignores':{}
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+

@@ -1,0 +1,205 @@
+def isFunctionDef(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.FunctionDef):
+        nodes['FunctionDef'] = {
+				'name': parse_nodes(nodes.name, nest),
+				'args': parse_nodes(nodes.args, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'decorator_list': parse_nodes(nodes.decorator_list, nest),
+				'returns': parse_nodes(nodes.returns, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isAsyncFunctionDef(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.AsyncFunctionDef):
+        nodes['AsyncFunctionDef'] = {
+				'name': parse_nodes(nodes.name, nest),
+				'args': parse_nodes(nodes.args, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'decorator_list': parse_nodes(nodes.decorator_list, nest),
+				'returns': parse_nodes(nodes.returns, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isClassDef(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.ClassDef):
+        nodes['ClassDef'] = {
+				'name': parse_nodes(nodes.name, nest),
+				'bases': parse_nodes(nodes.bases, nest),
+				'keywords': parse_nodes(nodes.keywords, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'decorator_list': parse_nodes(nodes.decorator_list, nest),
+        }
+    return nodes
+
+def isReturn(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Return):
+        nodes['Return'] = {
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isDelete(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Delete):
+        nodes['Delete'] = {
+				'targets': parse_nodes(nodes.targets, nest),
+        }
+    return nodes
+
+def isAssign(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Assign):
+        nodes['Assign'] = {
+				'targets': parse_nodes(nodes.targets, nest),
+				'value': parse_nodes(nodes.value, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isAugAssign(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.AugAssign):
+        nodes['AugAssign'] = {
+				'target': parse_nodes(nodes.target, nest),
+				'op': parse_nodes(nodes.op, nest),
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isAnnAssign(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.AnnAssign):
+        nodes['AnnAssign'] = {
+				'target': parse_nodes(nodes.target, nest),
+				'annotation': parse_nodes(nodes.annotation, nest),
+				'value': parse_nodes(nodes.value, nest),
+				'simple': parse_nodes(nodes.simple, nest),
+        }
+    return nodes
+
+def isFor(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.For):
+        nodes['For'] = {
+				'target': parse_nodes(nodes.target, nest),
+				'iter': parse_nodes(nodes.iter, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'orelse': parse_nodes(nodes.orelse, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isAsyncFor(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.AsyncFor):
+        nodes['AsyncFor'] = {
+				'target': parse_nodes(nodes.target, nest),
+				'iter': parse_nodes(nodes.iter, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'orelse': parse_nodes(nodes.orelse, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isWhile(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.While):
+        nodes['While'] = {
+				'test': parse_nodes(nodes.test, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'orelse': parse_nodes(nodes.orelse, nest),
+        }
+    return nodes
+
+def isIf(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.If):
+        nodes['If'] = {
+				'test': parse_nodes(nodes.test, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'orelse': parse_nodes(nodes.orelse, nest),
+        }
+    return nodes
+
+def isWith(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.With):
+        nodes['With'] = {
+				'items': parse_nodes(nodes.items, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isAsyncWith(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.AsyncWith):
+        nodes['AsyncWith'] = {
+				'items': parse_nodes(nodes.items, nest),
+				'body': parse_nodes(nodes.body, nest),
+				'type_comment': parse_nodes(nodes.type_comment, nest),
+        }
+    return nodes
+
+def isRaise(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Raise):
+        nodes['Raise'] = {
+				'exc': parse_nodes(nodes.exc, nest),
+				'cause': parse_nodes(nodes.cause, nest),
+        }
+    return nodes
+
+def isTry(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Try):
+        nodes['Try'] = {
+				'body': parse_nodes(nodes.body, nest),
+				'handlers': parse_nodes(nodes.handlers, nest),
+				'orelse': parse_nodes(nodes.orelse, nest),
+				'finalbody': parse_nodes(nodes.finalbody, nest),
+        }
+    return nodes
+
+def isAssert(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Assert):
+        nodes['Assert'] = {
+				'test': parse_nodes(nodes.test, nest),
+				'msg': parse_nodes(nodes.msg, nest),
+        }
+    return nodes
+
+def isImport(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Import):
+        nodes['Import'] = {
+				'names': parse_nodes(nodes.names, nest),
+        }
+    return nodes
+
+def isImportFrom(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.ImportFrom):
+        nodes['ImportFrom'] = {
+				'module': parse_nodes(nodes.module, nest),
+				'names': parse_nodes(nodes.names, nest),
+				'level': parse_nodes(nodes.level, nest),
+        }
+    return nodes
+
+def isGlobal(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Global):
+        nodes['Global'] = {
+				'names': parse_nodes(nodes.names, nest),
+        }
+    return nodes
+
+def isNonlocal(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Nonlocal):
+        nodes['Nonlocal'] = {
+				'names': parse_nodes(nodes.names, nest),
+        }
+    return nodes
+
+def isExpr(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.Expr):
+        nodes['Expr'] = {
+				'value': parse_nodes(nodes.value, nest),
+        }
+    return nodes
+
+def isPassBreakContinue(nodes, nest, parse_nodes):
+    if isinstance(nodes, ast.PassBreakContinue):
+        nodes['PassBreakContinue'] = {
+
+        }
+    return nodes
+

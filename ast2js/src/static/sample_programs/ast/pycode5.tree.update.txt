@@ -1,0 +1,771 @@
+{
+    'Module': {
+        'body': [
+            {
+                'ClassDef': {
+                    'bases': [],
+                    'body': [
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {}
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Return': {
+                                            'value': {}
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': '__init__',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        },
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {}
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Expr': {
+                                            'value': {
+                                                'Call': {
+                                                    'args': [
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': [
+                                                                    'Hello',
+                                                                    'World'
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    'func': {
+                                                        'Name': {
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'id': 'print'
+                                                        }
+                                                    },
+                                                    'keywords': []
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        'Expr': {
+                                            'value': {
+                                                'Call': {
+                                                    'args': [
+                                                        {
+                                                            'Call': {
+                                                                'args': [
+                                                                    {
+                                                                        'Constant': {
+                                                                            'kind': {},
+                                                                            'value': 'Hello'
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        'Constant': {
+                                                                            'kind': {},
+                                                                            'value': 'World.'
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                'func': {
+                                                                    'Attribute': {
+                                                                        'attr': 'str_join',
+                                                                        'ctx': {
+                                                                            'Load': {}
+                                                                        },
+                                                                        'value': {
+                                                                            'Name': {
+                                                                                'ctx': {
+                                                                                    'Load': {}
+                                                                                },
+                                                                                'id': 'self'
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                'keywords': []
+                                                            }
+                                                        }
+                                                    ],
+                                                    'func': {
+                                                        'Name': {
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'id': 'print'
+                                                        }
+                                                    },
+                                                    'keywords': []
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        'Expr': {
+                                            'value': {
+                                                'Call': {
+                                                    'args': [
+                                                        {
+                                                            'Call': {
+                                                                'args': [
+                                                                    {
+                                                                        'Constant': {
+                                                                            'kind': {},
+                                                                            'value': 'A'
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        'Constant': {
+                                                                            'kind': {},
+                                                                            'value': 'A'
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                'func': {
+                                                                    'Attribute': {
+                                                                        'attr': 'equals',
+                                                                        'ctx': {
+                                                                            'Load': {}
+                                                                        },
+                                                                        'value': {
+                                                                            'Name': {
+                                                                                'ctx': {
+                                                                                    'Load': {}
+                                                                                },
+                                                                                'id': 'self'
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                'keywords': []
+                                                            }
+                                                        }
+                                                    ],
+                                                    'func': {
+                                                        'Name': {
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'id': 'print'
+                                                        }
+                                                    },
+                                                    'keywords': []
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        'For': {
+                                            'body': [
+                                                {
+                                                    'Expr': {
+                                                        'value': {
+                                                            'Call': {
+                                                                'args': [
+                                                                    {
+                                                                        'Name': {
+                                                                            'ctx': {
+                                                                                'Load': {}
+                                                                            },
+                                                                            'id': 'i'
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                'func': {
+                                                                    'Name': {
+                                                                        'ctx': {
+                                                                            'Load': {}
+                                                                        },
+                                                                        'id': 'print'
+                                                                    }
+                                                                },
+                                                                'keywords': []
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            'iter': {
+                                                'Call': {
+                                                    'args': [
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 5
+                                                            }
+                                                        }
+                                                    ],
+                                                    'func': {
+                                                        'Name': {
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'id': 'range'
+                                                        }
+                                                    },
+                                                    'keywords': []
+                                                }
+                                            },
+                                            'orelse': [],
+                                            'target': {
+                                                'Name': {
+                                                    'ctx': {
+                                                        'Store': {}
+                                                    },
+                                                    'id': 'i'
+                                                }
+                                            },
+                                            'type_comment': {}
+                                        }
+                                    },
+                                    {
+                                        'For': {
+                                            'body': [
+                                                {
+                                                    'Expr': {
+                                                        'value': {
+                                                            'Call': {
+                                                                'args': [
+                                                                    {
+                                                                        'Name': {
+                                                                            'ctx': {
+                                                                                'Load': {}
+                                                                            },
+                                                                            'id': 'j'
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                'func': {
+                                                                    'Name': {
+                                                                        'ctx': {
+                                                                            'Load': {}
+                                                                        },
+                                                                        'id': 'print'
+                                                                    }
+                                                                },
+                                                                'keywords': []
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            'iter': {
+                                                'List': {
+                                                    'ctx': {
+                                                        'Load': {}
+                                                    },
+                                                    'elts': [
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 1
+                                                            }
+                                                        },
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 2
+                                                            }
+                                                        },
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 3
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            'orelse': [],
+                                            'target': {
+                                                'Name': {
+                                                    'ctx': {
+                                                        'Store': {}
+                                                    },
+                                                    'id': 'j'
+                                                }
+                                            },
+                                            'type_comment': {}
+                                        }
+                                    },
+                                    {
+                                        'Assign': {
+                                            'targets': [
+                                                {
+                                                    'Name': {
+                                                        'ctx': {
+                                                            'Store': {}
+                                                        },
+                                                        'id': 'aDict'
+                                                    }
+                                                }
+                                            ],
+                                            'type_comment': {},
+                                            'value': {
+                                                'Dict': {
+                                                    'keys': [
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 'key1'
+                                                            }
+                                                        },
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 'key2'
+                                                            }
+                                                        },
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 'key3'
+                                                            }
+                                                        }
+                                                    ],
+                                                    'values': [
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 'value1'
+                                                            }
+                                                        },
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 'value2'
+                                                            }
+                                                        },
+                                                        {
+                                                            'Constant': {
+                                                                'kind': {},
+                                                                'value': 'value3'
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        'For': {
+                                            'body': [
+                                                {
+                                                    'Expr': {
+                                                        'value': {
+                                                            'Call': {
+                                                                'args': [
+                                                                    {
+                                                                        'Subscript': {
+                                                                            'ctx': {
+                                                                                'Load': {}
+                                                                            },
+                                                                            'slice': {
+                                                                                'Name': {
+                                                                                    'ctx': {
+                                                                                        'Load': {}
+                                                                                    },
+                                                                                    'id': 'k'
+                                                                                }
+                                                                            },
+                                                                            'value': {
+                                                                                'Name': {
+                                                                                    'ctx': {
+                                                                                        'Load': {}
+                                                                                    },
+                                                                                    'id': 'aDict'
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                'func': {
+                                                                    'Name': {
+                                                                        'ctx': {
+                                                                            'Load': {}
+                                                                        },
+                                                                        'id': 'print'
+                                                                    }
+                                                                },
+                                                                'keywords': []
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            'iter': {
+                                                'Name': {
+                                                    'ctx': {
+                                                        'Load': {}
+                                                    },
+                                                    'id': 'aDict'
+                                                }
+                                            },
+                                            'orelse': [],
+                                            'target': {
+                                                'Name': {
+                                                    'ctx': {
+                                                        'Store': {}
+                                                    },
+                                                    'id': 'k'
+                                                }
+                                            },
+                                            'type_comment': {}
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': 'main',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        },
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {}
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Assign': {
+                                            'targets': [
+                                                {
+                                                    'Name': {
+                                                        'ctx': {
+                                                            'Store': {}
+                                                        },
+                                                        'id': 'hello'
+                                                    }
+                                                }
+                                            ],
+                                            'type_comment': {},
+                                            'value': {
+                                                'Constant': {
+                                                    'kind': {},
+                                                    'value': [
+                                                        'Hello',
+                                                        'World'
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        'Return': {
+                                            'value': {
+                                                'Name': {
+                                                    'ctx': {
+                                                        'Load': {}
+                                                    },
+                                                    'id': 'hello'
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': 'hello_world',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        },
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {
+                                            'arg': {
+                                                'annotation': {},
+                                                'arg': 'strings',
+                                                'type_comment': {}
+                                            }
+                                        }
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Return': {
+                                            'value': {
+                                                'Call': {
+                                                    'args': [
+                                                        {
+                                                            'Name': {
+                                                                'ctx': {
+                                                                    'Load': {}
+                                                                },
+                                                                'id': 'strings'
+                                                            }
+                                                        }
+                                                    ],
+                                                    'func': {
+                                                        'Attribute': {
+                                                            'attr': 'join',
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'value': {
+                                                                'Constant': {
+                                                                    'kind': {},
+                                                                    'value': ''
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    'keywords': []
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': 'str_join',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        },
+                        {
+                            'FunctionDef': {
+                                'args': {
+                                    'arguments': {
+                                        'args': [
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'self',
+                                                    'type_comment': {}
+                                                }
+                                            },
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'aString',
+                                                    'type_comment': {}
+                                                }
+                                            },
+                                            {
+                                                'arg': {
+                                                    'annotation': {},
+                                                    'arg': 'anotherString',
+                                                    'type_comment': {}
+                                                }
+                                            }
+                                        ],
+                                        'defaults': [],
+                                        'kw_defaults': [],
+                                        'kwarg': {},
+                                        'kwonlyargs': [],
+                                        'posonlyargs': [],
+                                        'vararg': {}
+                                    }
+                                },
+                                'body': [
+                                    {
+                                        'Return': {
+                                            'value': {
+                                                'Compare': {
+                                                    'comparators': [
+                                                        {
+                                                            'Name': {
+                                                                'ctx': {
+                                                                    'Load': {}
+                                                                },
+                                                                'id': 'anotherString'
+                                                            }
+                                                        }
+                                                    ],
+                                                    'left': {
+                                                        'Name': {
+                                                            'ctx': {
+                                                                'Load': {}
+                                                            },
+                                                            'id': 'aString'
+                                                        }
+                                                    },
+                                                    'ops': [
+                                                        {
+                                                            'Add': '+',
+                                                            'Eq': '='
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                'decorator_list': [],
+                                'name': 'equals',
+                                'returns': {},
+                                'type_comment': {}
+                            }
+                        }
+                    ],
+                    'decorator_list': [],
+                    'keywords': [],
+                    'name': 'Example'
+                }
+            },
+            {
+                'If': {
+                    'body': [
+                        {
+                            'Assign': {
+                                'targets': [
+                                    {
+                                        'Name': {
+                                            'ctx': {
+                                                'Store': {}
+                                            },
+                                            'id': 'example'
+                                        }
+                                    }
+                                ],
+                                'type_comment': {},
+                                'value': {
+                                    'Call': {
+                                        'args': [],
+                                        'func': {
+                                            'Name': {
+                                                'ctx': {
+                                                    'Load': {}
+                                                },
+                                                'id': 'Example'
+                                            }
+                                        },
+                                        'keywords': []
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            'Expr': {
+                                'value': {
+                                    'Call': {
+                                        'args': [],
+                                        'func': {
+                                            'Attribute': {
+                                                'attr': 'main',
+                                                'ctx': {
+                                                    'Load': {}
+                                                },
+                                                'value': {
+                                                    'Name': {
+                                                        'ctx': {
+                                                            'Load': {}
+                                                        },
+                                                        'id': 'example'
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        'keywords': []
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    'orelse': [],
+                    'test': {
+                        'Compare': {
+                            'comparators': [
+                                {
+                                    'Constant': {
+                                        'kind': {},
+                                        'value': '__main__'
+                                    }
+                                }
+                            ],
+                            'left': {
+                                'Name': {
+                                    'ctx': {
+                                        'Load': {}
+                                    },
+                                    'id': '__name__'
+                                }
+                            },
+                            'ops': [
+                                {
+                                    'Add': '+',
+                                    'Eq': '='
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        'type_ignores': []
+    }
+}

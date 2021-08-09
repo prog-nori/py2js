@@ -1,0 +1,8 @@
+Todo:
+ast.Moduleを解析して、ast.dumpした結果を辞書に変換できるようにする
+
+Next Todo1:
+Todoの結果を元に、対応するjsの構文が書かれた辞書を作成する
+
+Next Todo2:
+Next Todo1の結果とTodoの結果を紐付けて変換を行うようにする。(js->pyは非対応)
