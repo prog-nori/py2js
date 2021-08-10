@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 #! -*- coding:utf-8 -*-
 
-from ast2js.src.util.boolutil import hasKeyOr
+from typing import Union
 from ast2js.src.util.jscode import JsCode
 from ast2js.src.modules.operator import Operator
 import pprint
@@ -86,18 +86,14 @@ class Translator:
                     resp = JsCode('null')
                 else:
                     resp.add(self.parse_dict(v, opt))
-            #     print('my tern:', str(resp))
-            # print('Resp:', resp)
-            if hasKeyOr(opt, 'list', False):
-                return resp
+            if isinstance(opt, list) or isinstance(opt, dict):
+                if opt.get('list', False):
+                    return resp
             return str(resp)
 
         elif isinstance(tree, list):
-            # print('Tree:', tree)
             for item in tree:
-                # print('[Type]', type(item))
                 aList.append(self.parse_dict(item, opt))
-            # print('aList:', aList)
 
         anotherList = [
             str(item) if isinstance(item, int) else None
@@ -105,6 +101,6 @@ class Translator:
             for item in list(filter(lambda x: x is not None, aList))]
         anotherList = list(filter(lambda x: x not in [''], anotherList))
 
-        if hasKeyOr(opt, 'list', False):
+        if opt.get('list', False):
             return anotherList
         return ''.join(anotherList)

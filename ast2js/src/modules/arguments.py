@@ -3,17 +3,6 @@
 
 from ast2js.src.modules.nodeParser import NodeParser
 from ast2js.src.util.jscode import JsCode
-# from get_abstract_tree.modules.expr import isConstant
-from ..util.boolutil import (
-    hasKeyOr,
-    hasAnyChildOr
-)
-from ..util.stringutil import (
-    insert,
-    getIndent
-)
-
-setIndent = lambda aString, indent: insert(aString, 0, getIndent(indent))
 
 class Arguments(NodeParser):
 
@@ -21,19 +10,19 @@ class Arguments(NodeParser):
 
     def __init__(self, recursion_function):
         self.func = recursion_function
-        self.tuples = [
-            ('arguments', self.isArguments),
-        ]
+        self.synbols = {
+            'arguments': self.isArguments
+        }
         return
 
     def isArguments(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _args = hasKeyOr(v, 'args', [])
-        _vararg = hasKeyOr(v, 'vararg', [])
-        _kwonlyargs = hasKeyOr(v, 'kwonlyarg', [])
-        _kw_defaults = hasKeyOr(v, 'kw_defaults', [])
-        _kwarg = hasKeyOr(v, 'kwarg', [])
-        _defaults = hasKeyOr(v, 'defaults', [])
+        _args = v.get('args', [])
+        _vararg = v.get('vararg', [])
+        _kwonlyargs = v.get('kwonlyarg', [])
+        _kw_defaults = v.get('kw_defaults', [])
+        _kwarg = v.get('kwarg', [])
+        _defaults = v.get('defaults', [])
 
         get_arguments_list = lambda aList: list(filter(lambda x: x is not None, [self.func(item) if item != {} else [] for item in aList]))
 

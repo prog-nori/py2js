@@ -11,18 +11,18 @@ class Cmpop(NodeParser):
 
     def __init__(self, recursion_function):
         self.func = recursion_function
-        self.tuples = [
-            ('Eq', self.isEq),
-            ('NotEq', self.isNotEq),
-            ('Lt', self.isLt),
-            ('LtE', self.isLtE),
-            ('Gt', self.isGt),
-            ('GtE', self.isGtE),
-            ('Is', self.isIs),
-            ('IsNot', self.isIsNot),
-            ('In', self.isIn),
-            ('NotIn', self.isNotIn),
-        ]
+        self.synbols = {
+            'Eq': self.isEq,
+            'NotEq': self.isNotEq,
+            'Lt': self.isLt,
+            'LtE': self.isLtE,
+            'Gt': self.isGt,
+            'GtE': self.isGtE,
+            'Is': self.isIs,
+            'IsNot': self.isIsNot,
+            'In': self.isIn,
+            'NotIn': self.isNotIn,
+        }
         return
 
     def isEq(self, v, opt={}):

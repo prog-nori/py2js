@@ -4,52 +4,45 @@
 from ast2js.src.util.jscode import JsCode
 from ast2js.src.modules.nodeParser import NodeParser
 from ..util.boolutil import (
-    hasKeyOr,
-    hasAnyChildOr
-)
-from ..util.stringutil import (
-    insert,
-    getIndent
+    deep_get
 )
 import re
-
-setIndent = lambda aString, indent: insert(aString, 0, getIndent(indent))
 
 class Expr(NodeParser):
 
     tuples = ...
 
     def __init__(self, recursion_function):
-        self.tuples = [
-            ('BoolOp', self.isBoolOp),
-            ('NamedExpr', self.isNamedExpr),
-            ('BinOp', self.isBinOp),
-            ('UnaryOp', self.isUnaryOp),
-            ('Lambda', self.isLambda),
-            ('IfExp', self.isIfExp),
-            ('Dict', self.isDict),
-            ('Set', self.isSet),
-            ('ListComp', self.isListComp),
-            ('SetComp', self.isSetComp),
-            ('DictComp', self.isDictComp),
-            ('GeneratorExp', self.isGeneratorExp),
-            ('Await', self.isAwait),
-            ('Yield', self.isYield),
-            ('YieldFrom', self.isYieldFrom),
-            ('Compare', self.isCompare),
-            ('Call', self.isCall),
-            ('FormattedValue', self.isFormattedValue),
-            ('JoinedStr', self.isJoinedStr),
-            ('Constant', self.isConstant),
-            ('Attribute', self.isAttribute),
-            ('Subscript', self.isSubscript),
-            ('Starred', self.isStarred),
-            ('Name', self.isName),
-            ('List', self.isList),
-            ('Tuple', self.isTuple),
-            ('Slice', self.isSlice),
-            ('attributes', self.isattributes),
-        ]
+        self.synbols = {
+            'BoolOp': self.isBoolOp,
+            'NamedExpr': self.isNamedExpr,
+            'BinOp': self.isBinOp,
+            'UnaryOp': self.isUnaryOp,
+            'Lambda': self.isLambda,
+            'IfExp': self.isIfExp,
+            'Dict': self.isDict,
+            'Set': self.isSet,
+            'ListComp': self.isListComp,
+            'SetComp': self.isSetComp,
+            'DictComp': self.isDictComp,
+            'GeneratorExp': self.isGeneratorExp,
+            'Await': self.isAwait,
+            'Yield': self.isYield,
+            'YieldFrom': self.isYieldFrom,
+            'Compare': self.isCompare,
+            'Call': self.isCall,
+            'FormattedValue': self.isFormattedValue,
+            'JoinedStr': self.isJoinedStr,
+            'Constant': self.isConstant,
+            'Attribute': self.isAttribute,
+            'Subscript': self.isSubscript,
+            'Starred': self.isStarred,
+            'Name': self.isName,
+            'List': self.isList,
+            'Tuple': self.isTuple,
+            'Slice': self.isSlice,
+            'attributes': self.isattributes,
+        }
         self.func = recursion_function
         return
 
@@ -63,11 +56,11 @@ class Expr(NodeParser):
 
     def isBinOp(self, v, opt={}):
         jscode: JsCode = JsCode()
-        left = self.func(hasKeyOr(v, 'left'))
-        k = hasKeyOr(v, 'op')
+        left = self.func(v.get('left'))
+        k = v.get('op')
         _op = k if k not in [{}, None] else {'Add': '+'}
         op = self.func(_op)
-        right = self.func(hasKeyOr(v, 'right'))
+        right = self.func(v.get('right'))
         jscode.add(f'{left} {op} {right}')
         return jscode
 
@@ -82,9 +75,9 @@ class Expr(NodeParser):
     def isIfExp(self, v, opt={}):
         # 三項演算子
         jscode: JsCode = JsCode()
-        _test = hasKeyOr(v, 'test')
-        _body = hasKeyOr(v, 'body')
-        _orelse = hasKeyOr(v, 'orelse', [])
+        _test = v.get('test')
+        _body = v.get('body')
+        _orelse = v.get('orelse', [])
         orelse = None
         if not (_test is None or _body is None):
             test = self.func(_test)
@@ -116,15 +109,9 @@ class Expr(NodeParser):
 
     def isListComp(self, v, opt={}):
         jscode: JsCode = JsCode()
-        elt = self.func(hasKeyOr(v, 'elt'))
-        generators = self.func(hasKeyOr(v, 'generators'), opt={
-            'elt': hasKeyOr(v, 'elt')
-            # 'elt': elt
+        generators = self.func(v.get('generators'), opt={
+            'elt': v.get('elt')
         })
-        # print('elt:')
-        # print(elt)
-        # print('generators:')
-        # print(generators)
         jscode.add(generators)
         return jscode
 
@@ -138,15 +125,13 @@ class Expr(NodeParser):
 
     def isGeneratorExp(self, v, opt={}):
         jscode: JsCode = JsCode()
-        elt = self.func(hasKeyOr(v, 'elt'))
+        elt = self.func(v.get('elt'))
         op = {
             'elt': {
-                'Return': hasKeyOr(v, 'elt')
+                'Return': v.get('elt')
             }
         }
-        generators = self.func(hasKeyOr(v, 'generators'), opt=op)
-        # print('generators:')
-        # print(generators)
+        generators = self.func(v.get('generators'), opt=op)
         return jscode
 
     def isAwait(self, v, opt={}):
@@ -163,17 +148,17 @@ class Expr(NodeParser):
 
     def isCompare(self, v, opt={}):
         jscode: JsCode = JsCode()
-        left = self.func(hasKeyOr(v, 'left'))
-        ops = self.func(hasKeyOr(v, 'ops'))
-        comparators = self.func(hasKeyOr(v, 'comparators'))
+        left = self.func(v.get('left'))
+        ops = self.func(v.get('ops'))
+        comparators = self.func(v.get('comparators'))
         jscode.add(f'{left} {ops} {comparators}')
         return jscode
 
     def isCall(self, v, opt={}):
         # 関数呼び出し
         jscode: JsCode = JsCode()
-        _args = hasKeyOr(v, 'args', None)
-        _func = hasKeyOr(v, 'func', None)
+        _args = v.get('args')
+        _func = v.get('func')
         args = ''
         func = ''
         if _args is not None:
@@ -201,7 +186,7 @@ class Expr(NodeParser):
     def isConstant(self, v, opt={}):
         jscode: JsCode = JsCode()
         if 'value' in v:
-            value = hasKeyOr(v, 'value')
+            value = v.get('value')
             if isinstance(value, list):
                 aString = ' '.join(value)
                 anotherString = f'\'{aString}\''
@@ -218,17 +203,17 @@ class Expr(NodeParser):
 
     def isAttribute(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _parent = str(self.isName(hasAnyChildOr(v, ['value', 'Name'], {})))
+        _parent = str(self.isName(deep_get(v, ['value', 'Name'], {})))
         parent = 'this' if _parent == 'self' else _parent
         parent = '\'\'' if parent == '' else parent
-        method = hasAnyChildOr(v, ['attr'], {})
+        method = deep_get(v, ['attr'], {})
         jscode.add('.'.join([parent, method]))
         return jscode
 
     def isSubscript(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _slice = hasKeyOr(v, 'slice')
-        _value = hasKeyOr(v, 'value')
+        _slice = v.get('slice')
+        _value = v.get('value')
         if _slice is not None and _value is not None:
             aSlice = self.func(_slice)
             aValue = self.func(_value)
@@ -240,7 +225,7 @@ class Expr(NodeParser):
         return jscode
 
     def isName(self, v: dict, opt={}):
-        name = hasKeyOr(v, 'id', '')
+        name = v.get('id', '')
         jscode: JsCode = JsCode()
         jscode.add(name)
         return jscode

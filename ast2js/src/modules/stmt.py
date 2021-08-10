@@ -4,18 +4,9 @@
 from ast2js.src.modules.nodeParser import NodeParser
 from ast2js.src.util.jscode import JsCode
 from ..util.boolutil import (
-    hasKeyOr,
-    hasAnyChildOr,
-)
-from ..util.stringutil import (
-    insert,
-    getIndent,
-    get_flat_list
+    deep_get,
 )
 import re
-from pprint import pprint
-
-setIndent = lambda aString, indent: insert(aString, 0, getIndent(indent))
 
 class Stmt(NodeParser):
     tuples = ...
@@ -23,51 +14,51 @@ class Stmt(NodeParser):
     def __init__(self, recursion_function):
         self.func = recursion_function
         self.isThisInClass = False
-        self.tuples = [
-            ('FunctionDef', self.isFunctionDef),
-            ('AsyncFunctionDef', self.isAsyncFunctionDef),
-            ('ClassDef', self.isClassDef),
-            ('Return', self.isReturn),
-            ('Delete', self.isDelete),
-            ('Assign', self.isAssign),
-            ('AugAssign', self.isAugAssign),
-            ('AnnAssign', self.isAnnAssign),
-            ('For', self.isFor),
-            ('AsyncFor', self.isAsyncFor),
-            ('While', self.isWhile),
-            ('If', self.isIf),
-            ('With', self.isWith),
-            ('AsyncWith', self.isAsyncWith),
-            ('Raise', self.isRaise),
-            ('Try', self.isTry),
-            ('Assert', self.isAssert),
-            ('Import', self.isImport),
-            ('ImportFrom', self.isImportFrom),
-            ('Global', self.isGlobal),
-            ('Nonlocal', self.isNonlocal),
-            ('Expr', self.isExpr),
-            ('Pass', self.isPass),
-            ('Break', self.isBreak),
-            ('Continue', self.isContinue),
-            ('attributes', self.isattributes),
-        ]
+        self.synbols = {
+            'FunctionDef': self.isFunctionDef,
+            'AsyncFunctionDef': self.isAsyncFunctionDef,
+            'ClassDef': self.isClassDef,
+            'Return': self.isReturn,
+            'Delete': self.isDelete,
+            'Assign': self.isAssign,
+            'AugAssign': self.isAugAssign,
+            'AnnAssign': self.isAnnAssign,
+            'For': self.isFor,
+            'AsyncFor': self.isAsyncFor,
+            'While': self.isWhile,
+            'If': self.isIf,
+            'With': self.isWith,
+            'AsyncWith': self.isAsyncWith,
+            'Raise': self.isRaise,
+            'Try': self.isTry,
+            'Assert': self.isAssert,
+            'Import': self.isImport,
+            'ImportFrom': self.isImportFrom,
+            'Global': self.isGlobal,
+            'Nonlocal': self.isNonlocal,
+            'Expr': self.isExpr,
+            'Pass': self.isPass,
+            'Break': self.isBreak,
+            'Continue': self.isContinue,
+            'attributes': self.isattributes,
+        }
         return
 
     def isFunctionDef(self, v, opt={}):
         jscode: JsCode = JsCode()
         isThisInClass = self.isThisInClass
-        args = self.func(hasKeyOr(v, 'args'), {'list': True})
+        args = self.func(v.get('args'), {'list': True})
         aList = list(filter(lambda x: x not in ['null'], args.get()))
         aCondition = isinstance(aList, list) and len(aList) == 0
         args = '' if aCondition else ','.join(aList if len(aList) > 0 else '')
-        func_name = hasKeyOr(v, 'name')
+        func_name = v.get('name')
 
         if isThisInClass is True:
             func_name = 'constructor' if func_name == '__init__' else func_name
             jscode.addln(f'{func_name}({args}) {{')
         else:
             jscode.addln(f'const {func_name} = ({args}) => {{')
-        body = hasKeyOr(v, 'body', {})
+        body = v.get('body', {})
         _inner_process = self.func(body, opt={'list': True})
         inner_process = []
         for item in _inner_process:
@@ -83,16 +74,16 @@ class Stmt(NodeParser):
 
     def isClassDef(self, v, opt={}):
         jscode: JsCode = JsCode()
-        name = hasKeyOr(v, 'name')
+        name = v.get('name')
         class_definition = f'class {name} '
         if len(v['bases']) != 0:
             # 継承処理
-            extends_classname = self.func(hasKeyOr(v, 'bases', 0))
+            extends_classname = self.func(v.get('bases', 0))
             jscode.addln(f'{class_definition}extends {extends_classname}{{')
         else:
             jscode.addln('{}{{'.format(class_definition))
         self.isThisInClass = True
-        body = self.func(hasKeyOr(v, 'body'), {'list': True})
+        body = self.func(v.get('body'), {'list': True})
         inner_process = []
         for item in body:
             inner_process.extend([item for item in str(item).split('\n')])
@@ -102,7 +93,7 @@ class Stmt(NodeParser):
         return jscode
 
     def isReturn(self, v, opt={}):
-        value = self.func(hasKeyOr(v, 'value'))
+        value = self.func(v.get('value'))
         jscode: JsCode = JsCode()
         if value is not None:
             jscode.add(f'return {value}')
@@ -117,8 +108,8 @@ class Stmt(NodeParser):
 
     def isAssign(self, v, opt={}):
         jscode: JsCode = JsCode()
-        variable_name = self.func(hasAnyChildOr(v, ['targets', 0], ''))
-        value = self.get_assign_variable_type(hasKeyOr(v, 'value'))
+        variable_name = self.func(deep_get(v, ['targets', 0], ''))
+        value = self.get_assign_variable_type(v.get('value'))
         keyword = ''
         if isinstance(value, str) and len(value) > 0:
             if value[0].isupper():
@@ -130,15 +121,15 @@ class Stmt(NodeParser):
     def isAugAssign(self, v, opt={}):
         # += -= *= /=等
         jscode: JsCode = JsCode()
-        target = hasKeyOr(v, 'target')
-        _key = hasKeyOr(v, 'op', {})
+        target = v.get('target')
+        _key = v.get('op', {})
         key = self.func(_key)
         op = ''
         if not key == '':
             op = f'{key}='
         else:
             op = '+='
-        value = self.func(hasKeyOr(v, 'value'))
+        value = self.func(v.get('value'))
         left = self.func(target)
         jscode.add(f'{left} {op} {value}')
         return jscode
@@ -150,8 +141,8 @@ class Stmt(NodeParser):
 
     def isFor(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _target = hasAnyChildOr(v, ['target'], None)
-        _iter = hasAnyChildOr(v, ['iter'], None)
+        _target = deep_get(v, ['target'], None)
+        _iter = deep_get(v, ['iter'], None)
         target = ''
         iter = ''
         childNode = None
@@ -174,9 +165,8 @@ class Stmt(NodeParser):
                 jscode.addln('for(let {0}=0; {0} < {1}; {0}++){{'.format(target, iter))
             else:
                 jscode.addln(f'for(const {target} in {iter}){{')
-            body =  self.func(hasKeyOr(v, 'body'), {'list': True})
+            body =  self.func(v.get('body'), {'list': True})
             jscode.add([f'{item}\n' for item in body])
-            # jscode.add('{}'.format(self.func(hasKeyOr(v, 'body'), {'list': True})))
             jscode.add_closer()
         return jscode
 
@@ -186,30 +176,24 @@ class Stmt(NodeParser):
 
     def isWhile(self, v, opt={}):
         jscode: JsCode = JsCode()
-        aList: list = list()
-        _test = hasKeyOr(v, 'test')
-        _body = hasKeyOr(v, 'body')
-        _orelse = hasKeyOr(v, 'orelse')
+        _test = v.get('test')
+        _body = v.get('body')
+        _orelse = v.get('orelse')
         test = self.func(_test)
         body = [self.func(item) for item in _body]
         orelse = [self.func(item) for item in _orelse]
         
         jscode.addln(f'while({test}){{')
         jscode.addln(body)
-        # for item in body:
-        #     aList.append(item)
         jscode.add_closer()
         jscode.add(orelse)
-        # for item in orelse:
-        #     aList.append(item)
-        # jscode.add(aList)
         return jscode
 
     def isIf(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _test = hasKeyOr(v, 'test')
-        _body = hasKeyOr(v, 'body')
-        _orelse = hasKeyOr(v, 'orelse', [])
+        _test = v.get('test')
+        _body = v.get('body')
+        _orelse = v.get('orelse', [])
         orelse = None
         if not (_test is None or _body is None):
             test = self.func(_test)
@@ -270,7 +254,7 @@ class Stmt(NodeParser):
 
     def isExpr(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _value = hasKeyOr(v, 'value')
+        _value = v.get('value')
         if _value is not None:
             value = self.func(_value)
             jscode.add(value)
@@ -294,7 +278,7 @@ class Stmt(NodeParser):
 
     def get_assign_variable_type(self, aVariable):
         if 'func' in aVariable:
-            func_name = self.func(hasKeyOr(aVariable, 'func'))
+            func_name = self.func(aVariable.get('func'))
             args = ''
             if 'args' in aVariable:
                 args = ', '.join([item['value'] for item in aVariable['args']])

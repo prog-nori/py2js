@@ -8,21 +8,21 @@ from ast2js.src.modules.nodeParser import NodeParser
 class Operator(NodeParser):
     def __init__(self, recursion_function):
         self.func = recursion_function
-        self.tuples = [
-            ('Add', self.isAdd),
-            ('Sub', self.isSub),
-            ('Mult', self.isMult),
-            ('MatMult', self.isMatMult),
-            ('Div', self.isDiv),
-            ('Mod', self.isMod),
-            ('Pow', self.isPow),
-            ('LShift', self.isLShift),
-            ('RShift', self.isRShift),
-            ('BitOr', self.isBitOr),
-            ('BitXor', self.isBitXor),
-            ('BitAnd', self.isBitAnd),
-            ('FloorDiv', self.isFloorDiv),
-        ]
+        self.synbols = {
+            'Add': self.isAdd,
+            'Sub': self.isSub,
+            'Mult': self.isMult,
+            'MatMult': self.isMatMult,
+            'Div': self.isDiv,
+            'Mod': self.isMod,
+            'Pow': self.isPow,
+            'LShift': self.isLShift,
+            'RShift': self.isRShift,
+            'BitOr': self.isBitOr,
+            'BitXor': self.isBitXor,
+            'BitAnd': self.isBitAnd,
+            'FloorDiv': self.isFloorDiv,
+        }
         return
 
     def isAdd(self, v, opt):
