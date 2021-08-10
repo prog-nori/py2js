@@ -12,11 +12,11 @@ class Comprehension(NodeParser):
     def __init__(self, recursion_function):
         self.func = recursion_function
         self.synbols = {
-            'comprehension': self.isComprehension
+            'comprehension': self.convert_Comprehension
         }
         return
 
-    def isComprehension(self, v, opt={}):
+    def convert_Comprehension(self, v, opt={}):
         jscode: JsCode = JsCode()
         target = v.get('target')
         iter = v.get('iter')

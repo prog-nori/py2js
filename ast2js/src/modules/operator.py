@@ -9,57 +9,57 @@ class Operator(NodeParser):
     def __init__(self, recursion_function):
         self.func = recursion_function
         self.synbols = {
-            'Add': self.isAdd,
-            'Sub': self.isSub,
-            'Mult': self.isMult,
-            'MatMult': self.isMatMult,
-            'Div': self.isDiv,
-            'Mod': self.isMod,
-            'Pow': self.isPow,
-            'LShift': self.isLShift,
-            'RShift': self.isRShift,
-            'BitOr': self.isBitOr,
-            'BitXor': self.isBitXor,
-            'BitAnd': self.isBitAnd,
-            'FloorDiv': self.isFloorDiv,
+            'Add': self.convert_Add,
+            'Sub': self.convert_Sub,
+            'Mult': self.convert_Mult,
+            'MatMult': self.convert_MatMult,
+            'Div': self.convert_Div,
+            'Mod': self.convert_Mod,
+            'Pow': self.convert_Pow,
+            'LShift': self.convert_LShift,
+            'RShift': self.convert_RShift,
+            'BitOr': self.convert_BitOr,
+            'BitXor': self.convert_BitXor,
+            'BitAnd': self.convert_BitAnd,
+            'FloorDiv': self.convert_FloorDiv,
         }
         return
 
-    def isAdd(self, v, opt):
+    def convert_Add(self, v, opt):
         return JsCode('+')
 
-    def isSub(self, v, opt):
+    def convert_Sub(self, v, opt):
         return JsCode('-')
 
-    def isMult(self, v, opt):
+    def convert_Mult(self, v, opt):
         return JsCode('*')
 
-    def isMatMult(self, v, opt):
+    def convert_MatMult(self, v, opt):
         return JsCode('@') # 行列乗算
 
-    def isDiv(self, v, opt):
+    def convert_Div(self, v, opt):
         return JsCode('/')
 
-    def isMod(self, v, opt):
+    def convert_Mod(self, v, opt):
         return JsCode('%')
 
-    def isPow(self, v, opt):
+    def convert_Pow(self, v, opt):
         return JsCode('**') # power
 
-    def isLShift(self, v, opt):
+    def convert_LShift(self, v, opt):
         return JsCode('<<')
 
-    def isRShift(self, v, opt):
+    def convert_RShift(self, v, opt):
         return JsCode('>>')
 
-    def isBitOr(self, v, opt):
+    def convert_BitOr(self, v, opt):
         return JsCode('|')
 
-    def isBitXor(self, v, opt):
+    def convert_BitXor(self, v, opt):
         return JsCode('^')
 
-    def isBitAnd(self, v, opt):
+    def convert_BitAnd(self, v, opt):
         return JsCode('&')
 
-    def isFloorDiv(self, v, opt):
+    def convert_FloorDiv(self, v, opt):
         return JsCode('//')

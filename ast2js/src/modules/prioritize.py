@@ -14,7 +14,7 @@ class Prioritize:
         self.func = recursion_function
         return
     
-    def isTheFirstProcess(self, k, v, opt):
+    def convert_TheFirstProcess(self, k, v, opt):
         jscode: JsCode = JsCode()
         if isinstance(v, dict):
             _if = deep_get(v, ['test', 'Compare'])

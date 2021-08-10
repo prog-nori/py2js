@@ -11,11 +11,11 @@ class Arg(NodeParser):
     def __init__(self, recursion_function):
         self.func = recursion_function
         self.synbols = {
-            'arg': self.isArg
+            'arg': self.convert_Arg
         }
         return
 
-    def isArg(self, v, opt={}):
+    def convert_Arg(self, v, opt={}):
         jscode: JsCode = JsCode()
         jscode.add(v.get('arg', ''))
         return jscode

@@ -14,47 +14,47 @@ class Expr(NodeParser):
 
     def __init__(self, recursion_function):
         self.synbols = {
-            'BoolOp': self.isBoolOp,
-            'NamedExpr': self.isNamedExpr,
-            'BinOp': self.isBinOp,
-            'UnaryOp': self.isUnaryOp,
-            'Lambda': self.isLambda,
-            'IfExp': self.isIfExp,
-            'Dict': self.isDict,
-            'Set': self.isSet,
-            'ListComp': self.isListComp,
-            'SetComp': self.isSetComp,
-            'DictComp': self.isDictComp,
-            'GeneratorExp': self.isGeneratorExp,
-            'Await': self.isAwait,
-            'Yield': self.isYield,
-            'YieldFrom': self.isYieldFrom,
-            'Compare': self.isCompare,
-            'Call': self.isCall,
-            'FormattedValue': self.isFormattedValue,
-            'JoinedStr': self.isJoinedStr,
-            'Constant': self.isConstant,
-            'Attribute': self.isAttribute,
-            'Subscript': self.isSubscript,
-            'Starred': self.isStarred,
-            'Name': self.isName,
-            'List': self.isList,
-            'Tuple': self.isTuple,
-            'Slice': self.isSlice,
-            'attributes': self.isattributes,
+            'BoolOp': self.convert_BoolOp,
+            'NamedExpr': self.convert_NamedExpr,
+            'BinOp': self.convert_BinOp,
+            'UnaryOp': self.convert_UnaryOp,
+            'Lambda': self.convert_Lambda,
+            'IfExp': self.convert_IfExp,
+            'Dict': self.convert_Dict,
+            'Set': self.convert_Set,
+            'ListComp': self.convert_ListComp,
+            'SetComp': self.convert_SetComp,
+            'DictComp': self.convert_DictComp,
+            'GeneratorExp': self.convert_GeneratorExp,
+            'Await': self.convert_Await,
+            'Yield': self.convert_Yield,
+            'YieldFrom': self.convert_YieldFrom,
+            'Compare': self.convert_Compare,
+            'Call': self.convert_Call,
+            'FormattedValue': self.convert_FormattedValue,
+            'JoinedStr': self.convert_JoinedStr,
+            'Constant': self.convert_Constant,
+            'Attribute': self.convert_Attribute,
+            'Subscript': self.convert_Subscript,
+            'Starred': self.convert_Starred,
+            'Name': self.convert_Name,
+            'List': self.convert_List,
+            'Tuple': self.convert_Tuple,
+            'Slice': self.convert_Slice,
+            'attributes': self.convert_attributes,
         }
         self.func = recursion_function
         return
 
-    def isBoolOp(self, v, opt={}):
+    def convert_BoolOp(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isNamedExpr(self, v, opt={}):
+    def convert_NamedExpr(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isBinOp(self, v, opt={}):
+    def convert_BinOp(self, v, opt={}):
         jscode: JsCode = JsCode()
         left = self.func(v.get('left'))
         k = v.get('op')
@@ -64,15 +64,15 @@ class Expr(NodeParser):
         jscode.add(f'{left} {op} {right}')
         return jscode
 
-    def isUnaryOp(self, v, opt={}):
+    def convert_UnaryOp(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isLambda(self, v, opt={}):
+    def convert_Lambda(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isIfExp(self, v, opt={}):
+    def convert_IfExp(self, v, opt={}):
         # 三項演算子
         jscode: JsCode = JsCode()
         _test = v.get('test')
@@ -86,7 +86,7 @@ class Expr(NodeParser):
             jscode.add(f'{test}? {body}: {orelse}')
         return jscode
 
-    def isDict(self, v, opt={}):
+    def convert_Dict(self, v, opt={}):
         jscode: JsCode = JsCode()
         keys = [aGrandChild['Constant']['value'] for aGrandChild in v['keys']]
         values = [aGrandChild['Constant']['value'] for aGrandChild in v['values']]
@@ -103,11 +103,11 @@ class Expr(NodeParser):
         ]))
         return jscode
 
-    def isSet(self, v, opt={}):
+    def convert_Set(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isListComp(self, v, opt={}):
+    def convert_ListComp(self, v, opt={}):
         jscode: JsCode = JsCode()
         generators = self.func(v.get('generators'), opt={
             'elt': v.get('elt')
@@ -115,15 +115,15 @@ class Expr(NodeParser):
         jscode.add(generators)
         return jscode
 
-    def isSetComp(self, v, opt={}):
+    def convert_SetComp(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isDictComp(self, v, opt={}):
+    def convert_DictComp(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isGeneratorExp(self, v, opt={}):
+    def convert_GeneratorExp(self, v, opt={}):
         jscode: JsCode = JsCode()
         elt = self.func(v.get('elt'))
         op = {
@@ -134,19 +134,19 @@ class Expr(NodeParser):
         generators = self.func(v.get('generators'), opt=op)
         return jscode
 
-    def isAwait(self, v, opt={}):
+    def convert_Await(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isYield(self, v, opt={}):
+    def convert_Yield(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isYieldFrom(self, v, opt={}):
+    def convert_YieldFrom(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isCompare(self, v, opt={}):
+    def convert_Compare(self, v, opt={}):
         jscode: JsCode = JsCode()
         left = self.func(v.get('left'))
         ops = self.func(v.get('ops'))
@@ -154,7 +154,7 @@ class Expr(NodeParser):
         jscode.add(f'{left} {ops} {comparators}')
         return jscode
 
-    def isCall(self, v, opt={}):
+    def convert_Call(self, v, opt={}):
         # 関数呼び出し
         jscode: JsCode = JsCode()
         _args = v.get('args')
@@ -175,15 +175,15 @@ class Expr(NodeParser):
             jscode.add(f'{func}({arguments})')
         return jscode
 
-    def isFormattedValue(self, v, opt={}):
+    def convert_FormattedValue(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isJoinedStr(self, v, opt={}):
+    def convert_JoinedStr(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isConstant(self, v, opt={}):
+    def convert_Constant(self, v, opt={}):
         jscode: JsCode = JsCode()
         if 'value' in v:
             value = v.get('value')
@@ -201,16 +201,16 @@ class Expr(NodeParser):
                 jscode.add(value)
         return jscode
 
-    def isAttribute(self, v, opt={}):
+    def convert_Attribute(self, v, opt={}):
         jscode: JsCode = JsCode()
-        _parent = str(self.isName(deep_get(v, ['value', 'Name'], {})))
+        _parent = str(self.convert_Name(deep_get(v, ['value', 'Name'], {})))
         parent = 'this' if _parent == 'self' else _parent
         parent = '\'\'' if parent == '' else parent
         method = deep_get(v, ['attr'], {})
         jscode.add('.'.join([parent, method]))
         return jscode
 
-    def isSubscript(self, v, opt={}):
+    def convert_Subscript(self, v, opt={}):
         jscode: JsCode = JsCode()
         _slice = v.get('slice')
         _value = v.get('value')
@@ -220,17 +220,17 @@ class Expr(NodeParser):
             jscode.add(f'{aValue}[{aSlice}]')
         return jscode
 
-    def isStarred(self, v, opt={}):
+    def convert_Starred(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isName(self, v: dict, opt={}):
+    def convert_Name(self, v: dict, opt={}):
         name = v.get('id', '')
         jscode: JsCode = JsCode()
         jscode.add(name)
         return jscode
 
-    def isList(self, v, opt={}):
+    def convert_List(self, v, opt={}):
         jscode: JsCode = JsCode()
         aList = []
         if 'elts' in v:
@@ -240,14 +240,14 @@ class Expr(NodeParser):
         jscode.add(']')
         return jscode
 
-    def isTuple(self, v, opt={}):
+    def convert_Tuple(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isSlice(self, v, opt={}):
+    def convert_Slice(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isattributes(self, v, opt={}):
+    def convert_attributes(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode

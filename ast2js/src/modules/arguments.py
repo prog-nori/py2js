@@ -11,11 +11,11 @@ class Arguments(NodeParser):
     def __init__(self, recursion_function):
         self.func = recursion_function
         self.synbols = {
-            'arguments': self.isArguments
+            'arguments': self.convert_Arguments
         }
         return
 
-    def isArguments(self, v, opt={}):
+    def convert_Arguments(self, v, opt={}):
         jscode: JsCode = JsCode()
         _args = v.get('args', [])
         _vararg = v.get('vararg', [])

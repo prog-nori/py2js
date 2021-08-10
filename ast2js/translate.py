@@ -53,7 +53,7 @@ class Translator:
         if isinstance(tree, dict):
             resp: JsCode = JsCode()
             for k, v in tree.items():
-                prioritize_res: JsCode = self.prioritize.isTheFirstProcess(k, v, opt)
+                prioritize_res: JsCode = self.prioritize.convert_TheFirstProcess(k, v, opt)
                 stmt_res: JsCode = self.stmt.parse(k, v, opt)
                 expr_res: JsCode = self.expr.parse(k, v, opt)
                 cmpop_res: JsCode = self.cmpop.parse(k, v, opt)

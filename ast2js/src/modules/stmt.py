@@ -15,36 +15,36 @@ class Stmt(NodeParser):
         self.func = recursion_function
         self.isThisInClass = False
         self.synbols = {
-            'FunctionDef': self.isFunctionDef,
-            'AsyncFunctionDef': self.isAsyncFunctionDef,
-            'ClassDef': self.isClassDef,
-            'Return': self.isReturn,
-            'Delete': self.isDelete,
-            'Assign': self.isAssign,
-            'AugAssign': self.isAugAssign,
-            'AnnAssign': self.isAnnAssign,
-            'For': self.isFor,
-            'AsyncFor': self.isAsyncFor,
-            'While': self.isWhile,
-            'If': self.isIf,
-            'With': self.isWith,
-            'AsyncWith': self.isAsyncWith,
-            'Raise': self.isRaise,
-            'Try': self.isTry,
-            'Assert': self.isAssert,
-            'Import': self.isImport,
-            'ImportFrom': self.isImportFrom,
-            'Global': self.isGlobal,
-            'Nonlocal': self.isNonlocal,
-            'Expr': self.isExpr,
-            'Pass': self.isPass,
-            'Break': self.isBreak,
-            'Continue': self.isContinue,
-            'attributes': self.isattributes,
+            'FunctionDef': self.convert_FunctionDef,
+            'AsyncFunctionDef': self.convert_AsyncFunctionDef,
+            'ClassDef': self.convert_ClassDef,
+            'Return': self.convert_Return,
+            'Delete': self.convert_Delete,
+            'Assign': self.convert_Assign,
+            'AugAssign': self.convert_AugAssign,
+            'AnnAssign': self.convert_AnnAssign,
+            'For': self.convert_For,
+            'AsyncFor': self.convert_AsyncFor,
+            'While': self.convert_While,
+            'If': self.convert_If,
+            'With': self.convert_With,
+            'AsyncWith': self.convert_AsyncWith,
+            'Raise': self.convert_Raise,
+            'Try': self.convert_Try,
+            'Assert': self.convert_Assert,
+            'Import': self.convert_Import,
+            'ImportFrom': self.convert_ImportFrom,
+            'Global': self.convert_Global,
+            'Nonlocal': self.convert_Nonlocal,
+            'Expr': self.convert_Expr,
+            'Pass': self.convert_Pass,
+            'Break': self.convert_Break,
+            'Continue': self.convert_Continue,
+            'attributes': self.convert_attributes,
         }
         return
 
-    def isFunctionDef(self, v, opt={}):
+    def convert_FunctionDef(self, v, opt={}):
         jscode: JsCode = JsCode()
         isThisInClass = self.isThisInClass
         args = self.func(v.get('args'), {'list': True})
@@ -68,11 +68,11 @@ class Stmt(NodeParser):
         jscode.add_br()
         return jscode
 
-    def isAsyncFunctionDef(self, v, opt={}):
+    def convert_AsyncFunctionDef(self, v, opt={}):
         # async def main(): ...のような形
         return self.isFunctionDef(v, opt)
 
-    def isClassDef(self, v, opt={}):
+    def convert_ClassDef(self, v, opt={}):
         jscode: JsCode = JsCode()
         name = v.get('name')
         class_definition = f'class {name} '
@@ -92,7 +92,7 @@ class Stmt(NodeParser):
         self.isThisInClass = False
         return jscode
 
-    def isReturn(self, v, opt={}):
+    def convert_Return(self, v, opt={}):
         value = self.func(v.get('value'))
         jscode: JsCode = JsCode()
         if value is not None:
@@ -101,12 +101,12 @@ class Stmt(NodeParser):
             jscode.add(f'return')
         return jscode
 
-    def isDelete(self, v, opt={}):
+    def convert_Delete(self, v, opt={}):
         jscode: JsCode = JsCode()
         jscode.add(self.func(v, opt={}))
         return jscode
 
-    def isAssign(self, v, opt={}):
+    def convert_Assign(self, v, opt={}):
         jscode: JsCode = JsCode()
         variable_name = self.func(deep_get(v, ['targets', 0], ''))
         value = self.get_assign_variable_type(v.get('value'))
@@ -118,7 +118,7 @@ class Stmt(NodeParser):
         jscode.add(f'{keyword} {variable_name} = {value}')
         return jscode
 
-    def isAugAssign(self, v, opt={}):
+    def convert_AugAssign(self, v, opt={}):
         # += -= *= /=等
         jscode: JsCode = JsCode()
         target = v.get('target')
@@ -134,12 +134,12 @@ class Stmt(NodeParser):
         jscode.add(f'{left} {op} {value}')
         return jscode
 
-    def isAnnAssign(self, v, opt={}):
+    def convert_AnnAssign(self, v, opt={}):
         jscode: JsCode = JsCode()
         jscode.add(self.func(v, opt={}))
         return jscode
 
-    def isFor(self, v, opt={}):
+    def convert_For(self, v, opt={}):
         jscode: JsCode = JsCode()
         _target = deep_get(v, ['target'], None)
         _iter = deep_get(v, ['iter'], None)
@@ -170,11 +170,11 @@ class Stmt(NodeParser):
             jscode.add_closer()
         return jscode
 
-    def isAsyncFor(self, v, opt={}):
+    def convert_AsyncFor(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isWhile(self, v, opt={}):
+    def convert_While(self, v, opt={}):
         jscode: JsCode = JsCode()
         _test = v.get('test')
         _body = v.get('body')
@@ -189,7 +189,7 @@ class Stmt(NodeParser):
         jscode.add(orelse)
         return jscode
 
-    def isIf(self, v, opt={}):
+    def convert_If(self, v, opt={}):
         jscode: JsCode = JsCode()
         _test = v.get('test')
         _body = v.get('body')
@@ -216,43 +216,43 @@ class Stmt(NodeParser):
             jscode.add_br
         return jscode
 
-    def isWith(self, v, opt={}):
+    def convert_With(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isAsyncWith(self, v, opt={}):
+    def convert_AsyncWith(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isRaise(self, v, opt={}):
+    def convert_Raise(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isTry(self, v, opt={}):
+    def convert_Try(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isAssert(self, v, opt={}):
+    def convert_Assert(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isImport(self, v, opt={}):
+    def convert_Import(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isImportFrom(self, v, opt={}):
+    def convert_ImportFrom(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isGlobal(self, v, opt={}):
+    def convert_Global(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isNonlocal(self, v, opt={}):
+    def convert_Nonlocal(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isExpr(self, v, opt={}):
+    def convert_Expr(self, v, opt={}):
         jscode: JsCode = JsCode()
         _value = v.get('value')
         if _value is not None:
@@ -260,19 +260,19 @@ class Stmt(NodeParser):
             jscode.add(value)
         return jscode
 
-    def isPass(self, v, opt={}):
+    def convert_Pass(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isBreak(self, v, opt={}):
+    def convert_Break(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isContinue(self, v, opt={}):
+    def convert_Continue(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
-    def isattributes(self, v, opt={}):
+    def convert_attributes(self, v, opt={}):
         jscode: JsCode = JsCode()
         return jscode
 
