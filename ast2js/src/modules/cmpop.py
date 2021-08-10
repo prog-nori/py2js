@@ -11,46 +11,46 @@ class Cmpop(NodeParser):
 
     def __init__(self, recursion_function):
         self.func = recursion_function
-        self.tuples = [
-            ('Eq', self.isEq),
-            ('NotEq', self.isNotEq),
-            ('Lt', self.isLt),
-            ('LtE', self.isLtE),
-            ('Gt', self.isGt),
-            ('GtE', self.isGtE),
-            ('Is', self.isIs),
-            ('IsNot', self.isIsNot),
-            ('In', self.isIn),
-            ('NotIn', self.isNotIn),
-        ]
+        self.synbols = {
+            'Eq': self.convert_Eq,
+            'NotEq': self.convert_NotEq,
+            'Lt': self.convert_Lt,
+            'LtE': self.convert_LtE,
+            'Gt': self.convert_Gt,
+            'GtE': self.convert_GtE,
+            'convert_': self.convert_Is,
+            'convert_Not': self.convert_IsNot,
+            'In': self.convert_In,
+            'NotIn': self.convert_NotIn,
+        }
         return
 
-    def isEq(self, v, opt={}):
+    def convert_Eq(self, v, opt={}):
         return JsCode('==')
 
-    def isNotEq(self, v, opt={}):
+    def convert_NotEq(self, v, opt={}):
         return JsCode('!=')
 
-    def isLt(self, v, opt={}):
+    def convert_Lt(self, v, opt={}):
         return JsCode('<')
 
-    def isLtE(self, v, opt={}):
+    def convert_LtE(self, v, opt={}):
         return JsCode('<=')
 
-    def isGt(self, v, opt={}):
+    def convert_Gt(self, v, opt={}):
         return JsCode('>')
 
-    def isGtE(self, v, opt={}):
+    def convert_GtE(self, v, opt={}):
         return JsCode('>=')
 
-    def isIs(self, v, opt={}):
+    def convert_Is(self, v, opt={}):
         return JsCode('===')
 
-    def isIsNot(self, v, opt={}):
+    def convert_IsNot(self, v, opt={}):
         return JsCode('!==')
 
-    def isIn(self, v, opt={}):
+    def convert_In(self, v, opt={}):
         return JsCode('in')
 
-    def isNotIn(self, v, opt={}):
+    def convert_NotIn(self, v, opt={}):
         return JsCode('not in')

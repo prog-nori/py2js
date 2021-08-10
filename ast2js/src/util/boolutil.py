@@ -1,29 +1,27 @@
 #! /usr/bin/env python3
 #! -*- coding: utf-8 -*-
 
-def hasKeyOr(anObject, aKey, defaultValue=None):
+def deep_get(d, keys, default=None):
     """
-    キーが存在すればそれを、存在しなければdefaultValueを返却する
+    Example:
+        d = {'meta': {'status': 'OK', 'status_code': 200}}
+        deep_get(d, ['meta', 'status_code'])          # => 200
+        deep_get(d, ['garbage', 'status_code'])       # => None
+        deep_get(d, ['meta', 'garbage'], default='-') # => '-'
     """
-    if aKey in anObject:
-        return anObject[aKey]
-    else:
-        return defaultValue
+    assert type(keys) is list
+    if d is None:
+        return default
+    if not keys:
+        return d
+    next = {}
+    if isinstance(d, dict):
+        next = d.get(keys[0])
+    elif isinstance(d, list):
+        if len(d) > keys[0]:
+            next = d[keys[0]]
+    return deep_get(next, keys[1:], default)
 
-def hasAnyChildOr(anObject, keys, defaultValue=None):
-    """
-    キーが存在すればそれを、存在しなければdefaultValueを返却する
-    """
-    aKey = keys[0]
-    aConditionA = isinstance(aKey, str) and aKey in anObject
-    aConditionB = isinstance(aKey, int) and len(anObject) > aKey
-    if aConditionA or aConditionB:
-        if len(keys) > 1:
-            return hasAnyChildOr(anObject[aKey], keys[1:], defaultValue)
-        else:
-            return anObject[aKey]
-    else:
-        return defaultValue
 
 """
 bool値をオブジェクト指向的に操作する簡易関数

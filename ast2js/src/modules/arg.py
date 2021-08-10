@@ -3,11 +3,6 @@
 
 from ast2js.src.util.jscode import JsCode
 from ast2js.src.modules.nodeParser import NodeParser
-from ..util.boolutil import hasKeyOr
-from ..util.stringutil import (
-    insert,
-    getIndent
-)
 
 class Arg(NodeParser):
 
@@ -15,12 +10,12 @@ class Arg(NodeParser):
 
     def __init__(self, recursion_function):
         self.func = recursion_function
-        self.tuples = [
-            ('arg', self.isArg),
-        ]
+        self.synbols = {
+            'arg': self.convert_Arg
+        }
         return
 
-    def isArg(self, v, opt={}):
+    def convert_Arg(self, v, opt={}):
         jscode: JsCode = JsCode()
-        jscode.add(hasKeyOr(v, 'arg', ''))
+        jscode.add(v.get('arg', ''))
         return jscode
